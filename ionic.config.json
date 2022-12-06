@@ -1,0 +1,7 @@
+{
+  "name": "plantilla1_uagro",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
