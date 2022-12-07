@@ -9,6 +9,7 @@ import { Redirect, Route } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
 import Menu from "./components/Menu";
+import PaginaPrincipal from "./pages/PaginaPrincipal";
 import Page from "./pages/Page";
 
 /* Core CSS required for Ionic components to work properly */
@@ -47,7 +48,7 @@ const App: React.FC = () => {
             </Route>
             <Route path="/page/:name" exact={true}>
               {/* Pagina por defecto */}
-              <Page />
+              <PaginaPrincipal />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>
