@@ -9,8 +9,6 @@ import { Redirect, Route } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
 import Menu from "./components/Menu";
-import PaginaPrincipal from "./pages/PaginaPrincipal";
-import Page from "./pages/Page";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -30,6 +28,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import ContenedorDePagina from "./components/ContenedorDePagina";
 
 setupIonicReact();
 
@@ -44,11 +43,11 @@ const App: React.FC = () => {
           <IonRouterOutlet id="main">
             {/*Pagina por defecto*/}
             <Route path="/" exact={true}>
-              <Redirect to="/page/Inbox" />
+              <Redirect to="/uagro/inicio" />
             </Route>
-            <Route path="/page/:name" exact={true}>
+            <Route path="/uagro/:name" exact={true}>
               {/* Pagina por defecto */}
-              <PaginaPrincipal />
+              <ContenedorDePagina />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>

@@ -1,6 +1,7 @@
 import {
   IonContent,
   IonIcon,
+  IonImg,
   IonItem,
   IonLabel,
   IonList,
@@ -8,17 +9,23 @@ import {
   IonMenu,
   IonMenuToggle,
   IonNote,
+  IonThumbnail,
 } from "@ionic/react";
 
 import { useLocation } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
+import logoUagro from "../img/logo-uagro-blanco.png";
 import {
   archiveOutline,
   archiveSharp,
   bookmarkOutline,
   heartOutline,
   heartSharp,
+  logoFacebook,
+  logoInstagram,
+  logoTwitter,
+  logoWhatsapp,
   mailOutline,
   mailSharp,
   paperPlaneOutline,
@@ -30,49 +37,65 @@ import {
 } from "ionicons/icons";
 import "./Menu.css";
 
-interface AppPage {
+// Pagina del menu
+interface paginaDelMenu {
   url: string;
-  iosIcon: string;
-  mdIcon: string;
-  title: string;
+  IconoIos: string;
+  IconoAndroid: string;
+  Titulo: string;
 }
 
-const appPages: AppPage[] = [
+// Lista de las paginas
+const listaDePaginas: paginaDelMenu[] = [
   {
-    title: "Inicio",
-    url: "/page/Inbox",
-    iosIcon: mailOutline,
-    mdIcon: mailSharp,
+    Titulo: "Inicio",
+    url: "/uagro/Inicio",
+    IconoIos: mailOutline,
+    IconoAndroid: mailSharp,
   },
   {
-    title: "Información",
-    url: "/page/Outbox",
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp,
+    Titulo: "Noticias",
+    url: "/uagro/Noticias",
+    IconoIos: paperPlaneOutline,
+    IconoAndroid: paperPlaneSharp,
   },
   {
-    title: "Favoritos",
-    url: "/page/Favorites",
-    iosIcon: heartOutline,
-    mdIcon: heartSharp,
-  },
-  {
-    title: "Uagro",
-    url: "/page/Archived",
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp,
-  },
-  {
-    title: "Otros",
-    url: "/page/Trash",
-    iosIcon: trashOutline,
-    mdIcon: trashSharp,
+    Titulo: "Eventos",
+    url: "/uagro/Eventos",
+    IconoIos: heartOutline,
+    IconoAndroid: heartSharp,
   },
 ];
 
-const labels = ["Google", "Link", "GitHub"];
+// Contacto
+interface contacto {
+  titulo: string;
+  icono: string;
+  url: string;
+}
 
+//Contactos de la pagina
+const contactos: contacto[] = [
+  {
+    titulo: "Facebook",
+    icono: logoFacebook,
+    url: "https://www.facebook.com/UAGro.MX.Oficial/",
+  },
+  {
+    titulo: "Twitter",
+    icono: logoTwitter,
+    url: "https://twitter.com/uagro_mx?lang=es",
+  },
+  {
+    titulo: "Instagram",
+    icono: logoInstagram,
+    url: "https://www.instagram.com/uagro_mx/?hl=es",
+  },
+];
+
+//Menu principal
 const Menu: React.FC = () => {
+  // Localización
   const location = useLocation();
 
   return (
@@ -81,11 +104,17 @@ const Menu: React.FC = () => {
       {/* Contenedor ionic */}
       <IonContent>
         {/* Lista ionic */}
-        <IonList id="inbox-list">
-          <IonListHeader>Uagro</IonListHeader>
-          <IonNote>ejemplo@uagro.mx</IonNote>
+        <IonList id="menu-list">
+          {/* Titulo */}
+          {/* <IonListHeader>Uagro</IonListHeader> */}
+
+          {/* Logo de la uagro */}
+          <IonImg src={logoUagro} id="logoUagro" alt="Logo de la Uagro" />
+
+          {/* Subtitulo */}
+          <IonNote>Universidad Autónoma de Guerrero</IonNote>
           {/* Recorremos con map */}
-          {appPages.map((appPage, index) => {
+          {listaDePaginas.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
                 {/* Item ionic */}
@@ -98,25 +127,33 @@ const Menu: React.FC = () => {
                   lines="none"
                   detail={false}
                 >
-                  {/* Icono ionic */}
+                  {/* Icono */}
                   <IonIcon
                     slot="start"
-                    ios={appPage.iosIcon}
-                    md={appPage.mdIcon}
+                    ios={appPage.IconoIos}
+                    md={appPage.IconoAndroid}
                   />
-                  <IonLabel>{appPage.title}</IonLabel>
+                  <IonLabel>{appPage.Titulo}</IonLabel>
                 </IonItem>
               </IonMenuToggle>
             );
           })}
         </IonList>
 
-        <IonList id="labels-list">
-          <IonListHeader>Etiquetas</IonListHeader>
-          {labels.map((label, index) => (
+        {/* Parte de las redes sociales */}
+        <IonList id="etiquetas-list">
+          {/* Titulo */}
+          <IonListHeader>Nuestras redes sociales: </IonListHeader>
+          {/* Etiquetas */}
+          {contactos.map((cont, index) => (
             <IonItem lines="none" key={index}>
-              <IonIcon slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
+              {/* Icono */}
+              <IonIcon slot="start" ios={cont.icono} md={cont.icono} />
+              {/* Cadena de texto */}
+              <IonLabel>
+                {/* URL */}
+                <a href={cont.url}>{cont.titulo}</a>
+              </IonLabel>
             </IonItem>
           ))}
         </IonList>
