@@ -9,7 +9,6 @@ import {
   IonMenu,
   IonMenuToggle,
   IonNote,
-  IonThumbnail,
 } from "@ionic/react";
 
 import { useLocation } from "react-router-dom";
@@ -17,23 +16,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import logoUagro from "../img/logo-uagro-blanco.png";
 import {
-  archiveOutline,
-  archiveSharp,
-  bookmarkOutline,
-  heartOutline,
-  heartSharp,
+  calendarOutline,
+  calendarSharp,
+  homeOutline,
+  homeSharp,
   logoFacebook,
   logoInstagram,
   logoTwitter,
-  logoWhatsapp,
-  mailOutline,
-  mailSharp,
-  paperPlaneOutline,
-  paperPlaneSharp,
-  trashOutline,
-  trashSharp,
-  warningOutline,
-  warningSharp,
+  newspaperOutline,
+  newspaperSharp,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -50,20 +41,20 @@ const listaDePaginas: paginaDelMenu[] = [
   {
     Titulo: "Inicio",
     url: "/uagro/Inicio",
-    IconoIos: mailOutline,
-    IconoAndroid: mailSharp,
+    IconoIos: homeOutline,
+    IconoAndroid: homeSharp,
   },
   {
     Titulo: "Noticias",
     url: "/uagro/Noticias",
-    IconoIos: paperPlaneOutline,
-    IconoAndroid: paperPlaneSharp,
+    IconoIos: newspaperOutline,
+    IconoAndroid: newspaperSharp,
   },
   {
     Titulo: "Eventos",
     url: "/uagro/Eventos",
-    IconoIos: heartOutline,
-    IconoAndroid: heartSharp,
+    IconoIos: calendarOutline,
+    IconoAndroid: calendarSharp,
   },
 ];
 

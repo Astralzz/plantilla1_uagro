@@ -45,10 +45,13 @@ const App: React.FC = () => {
             <Route path="/" exact={true}>
               <Redirect to="/uagro/inicio" />
             </Route>
+            {/* Paginas del menu */}
             <Route path="/uagro/:name" exact={true}>
               {/* Pagina por defecto */}
               <ContenedorDePagina />
             </Route>
+            {/* Pagina de las noticias */}
+            {/* <Route path="/uagro/noticia/"></Route> */}
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>

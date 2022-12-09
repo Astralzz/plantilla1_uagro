@@ -1,22 +1,18 @@
 import {
-  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
-  IonIcon,
   IonMenuButton,
   IonPage,
-  IonText,
   IonTitle,
   IonToolbar,
-  ScrollDetail,
 } from "@ionic/react";
 import { useParams } from "react-router";
-import React, { createRef } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import "./ContenedorDePagina.css";
-import { warning } from "ionicons/icons";
 import PaginaPrueba from "../pages/PaginaPrueba";
+import PaginaMenuNoticias from "../pages/noticias/PaginaMenuNoticias";
 
 //Pagina de prueba
 const ContenedorDePagina: React.FC = () => {
@@ -25,15 +21,12 @@ const ContenedorDePagina: React.FC = () => {
 
   //Pagina que se a escogido
   const PaginaEscogida = () => {
+    //Paginas
     switch (nombreUrl) {
       case "Inicio":
         return <PaginaPrueba />;
       case "Noticias":
-        return (
-          <IonContent>
-            <IonTitle>Noticias</IonTitle>
-          </IonContent>
-        );
+        return <PaginaMenuNoticias />;
       case "Eventos":
         return (
           <IonContent>
