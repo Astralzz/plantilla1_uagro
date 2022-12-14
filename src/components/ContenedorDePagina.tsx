@@ -3,6 +3,7 @@ import {
   IonContent,
   IonHeader,
   IonMenuButton,
+  IonNav,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -14,7 +15,7 @@ import "./ContenedorDePagina.css";
 import PaginaPrueba from "../pages/PaginaPrueba";
 import PaginaMenuNoticias from "../pages/noticias/PaginaMenuNoticias";
 
-//Pagina de prueba
+//Contenedor de paginas
 const ContenedorDePagina: React.FC = () => {
   //Obtenemos el titulo de la pagina por la url
   const { name: nombreUrl } = useParams<{ name: string }>();
@@ -26,13 +27,9 @@ const ContenedorDePagina: React.FC = () => {
       case "Inicio":
         return <PaginaPrueba />;
       case "Noticias":
-        return <PaginaMenuNoticias />;
+        return <IonNav root={() => <PaginaMenuNoticias />}></IonNav>;
       case "Eventos":
-        return (
-          <IonContent>
-            <IonTitle>Eventos</IonTitle>
-          </IonContent>
-        );
+        return <IonTitle>Eventos</IonTitle>;
       default:
         return <PaginaPrueba />;
     }
@@ -56,7 +53,9 @@ const ContenedorDePagina: React.FC = () => {
       </IonHeader>
 
       {/* Pagina a mostrar */}
-      <PaginaEscogida />
+      <IonContent>
+        <PaginaEscogida />
+      </IonContent>
     </IonPage>
   );
 };

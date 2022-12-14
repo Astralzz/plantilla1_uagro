@@ -1,9 +1,9 @@
 //Interface de noticia
 interface Noticia {
   id: number;
-  titulo: number;
-  informacion: number;
-  fecha: number;
+  titulo: string;
+  informacion: string;
+  fecha: string;
   ruta_img: string | null;
 }
 

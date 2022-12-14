@@ -56,6 +56,12 @@ const listaDePaginas: paginaDelMenu[] = [
     IconoIos: calendarOutline,
     IconoAndroid: calendarSharp,
   },
+  {
+    Titulo: "Ajustes",
+    url: "/uagro/Ajustes",
+    IconoIos: calendarOutline,
+    IconoAndroid: calendarSharp,
+  },
 ];
 
 // Contacto

@@ -1,5 +1,6 @@
 import {
   IonApp,
+  IonNav,
   IonRouterOutlet,
   IonSplitPane,
   setupIonicReact,
@@ -51,7 +52,8 @@ const App: React.FC = () => {
               <ContenedorDePagina />
             </Route>
             {/* Pagina de las noticias */}
-            {/* <Route path="/uagro/noticia/"></Route> */}
+            {/* <Route path="/uagro/:name">
+                         </Route> */}
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>

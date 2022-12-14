@@ -6,61 +6,105 @@ import {
   IonCardSubtitle,
   IonCardTitle,
   IonContent,
+  IonNavLink,
+  IonSearchbar,
   IonText,
   IonTextarea,
+  IonTitle,
   useIonLoading,
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
-import { getListaNoticias } from "./ApiNoticias";
+import { getListaNoticias, getListaNoticiasPorNombre } from "./ApiNoticias";
 import Noticia from "./Noticia";
+import PaginaNoticia from "./PaginaNoticia";
+
+//Opciones de la fecha
+const OPCIONES_FECHA = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
 
 //Pagina de noticias
 const PaginaMenuNoticias: React.FC = () => {
   //Noticias
   const [listaNoticias, setNoticias] = useState<Noticia[]>([]);
+  const [textBuscar, setTextBuscar] = useState<string>("");
 
-  //Effect
+  //Effect al cargar
   useEffect(() => {
     //Buscamos
     buscarNoticias();
   }, []);
 
+  //Effect al cargar
+  useEffect(() => {
+    //Buscamos
+    buscarNoticias();
+  }, [textBuscar]);
+
   //Buscar noticias
   const buscarNoticias = async () => {
-    //Buscamos
-    const res = await getListaNoticias();
+    let res = [];
+    const noResultados = 3;
 
-    //Comprobamos
-    if (res === undefined || res === null || res.status > 399) {
-      setNoticias([]);
+    //Buscamos lista completa
+    if (textBuscar === "") {
+      res = await getListaNoticias(noResultados);
+
+      //Comprobamos
+      if (res === undefined || res === null || res.status > 399) {
+        setNoticias([]);
+      }
+    } /*Buscamos por nombre del input buscar*/ else {
+      res = await getListaNoticiasPorNombre(textBuscar);
+
+      //Comprobamos
+      if (res === undefined || res === null || res.status > 399) {
+        setNoticias([]);
+      }
     }
 
     setNoticias(res);
   };
 
-  //Ver noticia
-  const verNoticia = () => {
-    
-  }
-
   return (
-    <IonContent>
-      {/* Ponemos las noticias */}
-      {listaNoticias.map((noticia) => {
+    <>
+      {/* Buscar noticia */}
+      <IonSearchbar
+        onIonChange={(e) => setTextBuscar(String(e.detail.value))}
+        placeholder="Buscar noticia"
+      ></IonSearchbar>
+
+      {/* Ponemos la lista de las noticias */}
+      {listaNoticias.map((not) => {
         return (
-          <IonCard key={noticia.id}>
+          <IonCard key={not.id}>
             <IonCardHeader>
               {/* Titulo */}
-              <IonCardTitle>{noticia.titulo}</IonCardTitle>
+              <IonCardTitle>{not.titulo}</IonCardTitle>
               {/* Fecha */}
-              <IonCardSubtitle>{noticia.fecha}</IonCardSubtitle>
+              <IonCardSubtitle>
+                {new Date(not.fecha).toLocaleDateString("es-ES", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </IonCardSubtitle>
             </IonCardHeader>
             {/* Boton de entrar */}
-            <IonButton fill="clear">Ver</IonButton>
+            <IonNavLink
+              routerDirection="forward"
+              component={() => <PaginaNoticia noticia={not} />}
+            >
+              <IonButton fill="clear">Ver</IonButton>
+            </IonNavLink>
           </IonCard>
         );
       })}
-    </IonContent>
+    </>
   );
 };
 

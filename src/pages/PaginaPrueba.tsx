@@ -1,18 +1,30 @@
 import {
+  IonAvatar,
   IonButton,
   IonButtons,
   IonContent,
+  IonDatetime,
   IonHeader,
   IonIcon,
+  IonImg,
+  IonItem,
+  IonItemOption,
+  IonItemOptions,
+  IonItemSliding,
+  IonLabel,
+  IonList,
   IonMenuButton,
+  IonModal,
   IonPage,
+  IonPopover,
+  IonSearchbar,
   IonText,
   IonTitle,
   IonToolbar,
   ScrollDetail,
 } from "@ionic/react";
 import { useParams } from "react-router";
-import React, { createRef } from "react";
+import React, { createRef, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./PaginaPrueba.css";
 import { warning } from "ionicons/icons";
@@ -22,12 +34,20 @@ const PaginaPrueba: React.FC = () => {
   //Referencia de el scroll
   const contentRef = createRef<HTMLIonContentElement>();
 
+  // Componentes del modal
+  const modal = useRef<HTMLIonModalElement>(null);
+
+  function dismiss() {
+    modal.current?.dismiss();
+  }
+
+  // Poner el scroll abajo
   function scrollAbajo() {
     // Passing a duration to the method makes it so the scroll slowly
     // goes to the bottom instead of instantly
     contentRef.current?.scrollToBottom(500);
   }
-
+  // Poner el scroll arriba
   function scrollArriba() {
     // Passing a duration to the method makes it so the scroll slowly
     // goes to the top instead of instantly
@@ -35,14 +55,45 @@ const PaginaPrueba: React.FC = () => {
   }
 
   return (
+    // Contenido
     <IonContent ref={contentRef} id="colorFondoPagina" className="ion-padding">
       {/* Titulo */}
       <IonTitle color={"dark"}>Titulo de ejemplo</IonTitle>
+
+      {/* Bucar calendario */}
+      <IonButton id="popover-button">Open Menu</IonButton>
+      <IonPopover trigger="popover-button" dismissOnSelect={false}>
+        <IonContent>
+          <IonDatetime></IonDatetime>
+        </IonContent>
+      </IonPopover>
+
+      {/* Ejemplo de item deslizable */}
+      <IonItemSliding>
+        <IonItem>
+          <IonLabel>Sliding Item with End Options</IonLabel>
+        </IonItem>
+
+        <IonItemOptions>
+          <IonItemOption>Favorite</IonItemOption>
+          <IonItemOption color="danger">Delete</IonItemOption>
+        </IonItemOptions>
+      </IonItemSliding>
+
+      {/* Buscar datos */}
+      <IonSearchbar
+        id="open-modal"
+        animated={true}
+        placeholder="Animated"
+      ></IonSearchbar>
 
       {/* Boton de bajar */}
       <IonButton expand="block" onClick={scrollAbajo}>
         Bajar scroll
       </IonButton>
+
+      {/* Calendario */}
+      <IonDatetime></IonDatetime>
 
       {/* Texto ion */}
       <IonText color="warning">
@@ -119,11 +170,62 @@ const PaginaPrueba: React.FC = () => {
           ligula cursus rutrum.
         </p>
       </IonText>
-
       {/* Boton de subir */}
       <IonButton expand="block" onClick={scrollArriba}>
         Subir scroll
       </IonButton>
+
+      {/* Modal */}
+      <IonModal id="example-modal" ref={modal} trigger="open-modal">
+        <IonContent>
+          <IonToolbar>
+            <IonTitle>Modal</IonTitle>
+            <IonButtons slot="end">
+              <IonButton color="dark" onClick={() => dismiss()}>
+                Close
+              </IonButton>
+            </IonButtons>
+          </IonToolbar>
+          <IonList>
+            <IonItem>
+              <IonAvatar slot="start">
+                <IonImg src="https://i.pravatar.cc/300?u=b" />
+              </IonAvatar>
+              <IonLabel>
+                <h2>Connor Smith</h2>
+                <p>Sales Rep</p>
+              </IonLabel>
+            </IonItem>
+            <IonItem>
+              <IonAvatar slot="start">
+                <IonImg src="https://i.pravatar.cc/300?u=a" />
+              </IonAvatar>
+              <IonLabel>
+                <h2>Daniel Smith</h2>
+                <p>Product Designer</p>
+              </IonLabel>
+            </IonItem>
+            <IonItem>
+              <IonAvatar slot="start">
+                <IonImg src="https://i.pravatar.cc/300?u=d" />
+              </IonAvatar>
+              <IonLabel>
+                <h2>Greg Smith</h2>
+                <p>Director of Operations</p>
+              </IonLabel>
+            </IonItem>
+            <IonItem>
+              <IonAvatar slot="start">
+                <IonImg src="https://i.pravatar.cc/300?u=e" />
+              </IonAvatar>
+              <IonLabel>
+                <h2>Zoey Smith</h2>
+                <p>CEO</p>
+              </IonLabel>
+            </IonItem>
+          </IonList>
+        </IonContent>
+      </IonModal>
     </IonContent>
   );
 };
