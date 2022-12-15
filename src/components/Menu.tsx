@@ -25,6 +25,7 @@ import {
   logoTwitter,
   newspaperOutline,
   newspaperSharp,
+  navigate,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -87,6 +88,11 @@ const contactos: contacto[] = [
     titulo: "Instagram",
     icono: logoInstagram,
     url: "https://www.instagram.com/uagro_mx/?hl=es",
+  },
+  {
+    titulo: "Ubicación",
+    icono: navigate,
+    url: "https://www.google.com.mx/maps/preview",
   },
 ];
 

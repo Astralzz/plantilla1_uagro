@@ -3,11 +3,17 @@ import {
   IonButtons,
   IonCard,
   IonContent,
+  IonFab,
+  IonFabButton,
   IonHeader,
+  IonIcon,
+  IonItem,
+  IonTabBar,
   IonText,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import { chevronBack } from "ionicons/icons";
 import React from "react";
 import Noticia from "./Noticia";
 
@@ -20,12 +26,22 @@ interface props {
 const PaginaNoticia: React.FC<props> = (p) => {
   return (
     <IonContent class="ion-padding">
-      <IonTitle>{p.noticia.titulo}</IonTitle>
-      <IonText>{p.noticia.informacion}</IonText>
-      <IonHeader>
-        {" "}
-        <IonBackButton color={"primary"}></IonBackButton>
-      </IonHeader>
+      <IonContent>
+        <IonHeader collapse="condense">
+          <IonToolbar>
+            <IonTitle>{p.noticia.titulo}</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+
+        <IonTitle>{p.noticia.titulo}</IonTitle>
+        <IonText>{p.noticia.informacion}</IonText>
+      </IonContent>
+
+      <IonFab slot="fixed" vertical="bottom" horizontal="end">
+        <IonFabButton>
+          <IonBackButton defaultHref="home" />
+        </IonFabButton>
+      </IonFab>
     </IonContent>
   );
 };

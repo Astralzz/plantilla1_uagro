@@ -47,7 +47,7 @@ const PaginaMenuNoticias: React.FC = () => {
   //Buscar noticias
   const buscarNoticias = async () => {
     let res = [];
-    const noResultados = 3;
+    const noResultados = 10;
 
     //Buscamos lista completa
     if (textBuscar === "") {
@@ -70,7 +70,7 @@ const PaginaMenuNoticias: React.FC = () => {
   };
 
   return (
-    <>
+    <IonContent>
       {/* Buscar noticia */}
       <IonSearchbar
         onIonChange={(e) => setTextBuscar(String(e.detail.value))}
@@ -104,7 +104,7 @@ const PaginaMenuNoticias: React.FC = () => {
           </IonCard>
         );
       })}
-    </>
+    </IonContent>
   );
 };
 
