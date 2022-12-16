@@ -1,5 +1,6 @@
 import {
   IonBackButton,
+  IonButton,
   IonButtons,
   IonCard,
   IonContent,
@@ -16,6 +17,7 @@ import {
 import { chevronBack } from "ionicons/icons";
 import React from "react";
 import Noticia from "./Noticia";
+import "./EstiloNoticia.css";
 
 //props
 interface props {
@@ -26,15 +28,15 @@ interface props {
 const PaginaNoticia: React.FC<props> = (p) => {
   return (
     <IonContent class="ion-padding">
-      <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle>{p.noticia.titulo}</IonTitle>
-          </IonToolbar>
+      <IonContent class="PaginaNoticia">
+        <IonHeader translucent={true}>
+          <IonText>
+            <h1>{p.noticia.titulo}</h1>
+          </IonText>
+          <p>
+            <IonText>{p.noticia.informacion}</IonText>
+          </p>
         </IonHeader>
-
-        <IonTitle>{p.noticia.titulo}</IonTitle>
-        <IonText>{p.noticia.informacion}</IonText>
       </IonContent>
 
       <IonFab slot="fixed" vertical="bottom" horizontal="end">

@@ -1,4 +1,6 @@
 import {
+  IonAccordion,
+  IonAccordionGroup,
   IonAvatar,
   IonButton,
   IonButtons,
@@ -7,6 +9,7 @@ import {
   IonHeader,
   IonIcon,
   IonImg,
+  IonInput,
   IonItem,
   IonItemOption,
   IonItemOptions,
@@ -15,6 +18,7 @@ import {
   IonList,
   IonMenuButton,
   IonModal,
+  IonNote,
   IonPage,
   IonPopover,
   IonSearchbar,
@@ -24,10 +28,10 @@ import {
   ScrollDetail,
 } from "@ionic/react";
 import { useParams } from "react-router";
-import React, { createRef, useRef } from "react";
+import React, { createRef, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import "./PaginaPrueba.css";
-import { warning } from "ionicons/icons";
+import { helpCircle, personCircle, warning } from "ionicons/icons";
 
 //Pagina de prueba
 const PaginaPrueba: React.FC = () => {
@@ -54,11 +58,69 @@ const PaginaPrueba: React.FC = () => {
     contentRef.current?.scrollToTop(500);
   }
 
+  // ---------- SECCIÓN DE VALIDAR EMAIL
+  const [isTouched, setIsTouched] = useState(false);
+  const [isValid, setIsValid] = useState<boolean>();
+
+  const validateEmail = (email: string) => {
+    return email.match(
+      /^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    );
+  };
+
+  const validate = (ev: Event) => {
+    const value = (ev.target as HTMLInputElement).value;
+
+    setIsValid(undefined);
+
+    if (value === "") return;
+
+    validateEmail(value) !== null ? setIsValid(true) : setIsValid(false);
+  };
+
+  const markTouched = () => {
+    setIsTouched(true);
+  };
+
   return (
     // Contenido
     <IonContent ref={contentRef} id="colorFondoPagina" className="ion-padding">
       {/* Titulo */}
       <IonTitle color={"dark"}>Titulo de ejemplo</IonTitle>
+
+      {/* Email */}
+      <IonItem
+        fill="solid"
+        className={`${isValid && "ion-valid"} ${
+          isValid === false && "ion-invalid"
+        } ${isTouched && "ion-touched"}`}
+      >
+        <IonLabel position="floating">Email</IonLabel>
+        <IonInput
+          type="email"
+          onIonInput={(event) => validate(event)}
+          onIonBlur={() => markTouched()}
+        ></IonInput>
+        <IonNote slot="helper">Enter a valid email</IonNote>
+        <IonNote slot="error">Invalid email</IonNote>
+      </IonItem>
+
+      {/* Barra de ejemplo */}
+      <IonToolbar>
+        <IonButtons slot="secondary">
+          <IonButton fill="solid">
+            <IonIcon slot="start" icon={personCircle}></IonIcon>
+            Contact
+          </IonButton>
+        </IonButtons>
+        <IonButtons slot="primary">
+          <IonButton fill="solid">
+            Help
+            <IonIcon slot="end" icon={helpCircle}></IonIcon>
+          </IonButton>
+        </IonButtons>
+        <IonTitle>Solid Buttons</IonTitle>
+      </IonToolbar>
 
       {/* Bucar calendario */}
       <IonButton id="popover-button">Open Menu</IonButton>
@@ -67,6 +129,12 @@ const PaginaPrueba: React.FC = () => {
           <IonDatetime></IonDatetime>
         </IonContent>
       </IonPopover>
+
+      {/* input de ejemplo */}
+      <IonItem counter={true}>
+        <IonLabel position="floating">Default Counter</IonLabel>
+        <IonInput maxlength={20}></IonInput>
+      </IonItem>
 
       {/* Ejemplo de item deslizable */}
       <IonItemSliding>
@@ -79,6 +147,34 @@ const PaginaPrueba: React.FC = () => {
           <IonItemOption color="danger">Delete</IonItemOption>
         </IonItemOptions>
       </IonItemSliding>
+
+      {/* Acordeón de ejemplo */}
+      <IonAccordionGroup>
+        <IonAccordion value="first">
+          <IonItem slot="header" color="light">
+            <IonLabel>First Accordion</IonLabel>
+          </IonItem>
+          <div className="ion-padding" slot="content">
+            First Content
+          </div>
+        </IonAccordion>
+        <IonAccordion value="second">
+          <IonItem slot="header" color="light">
+            <IonLabel>Second Accordion</IonLabel>
+          </IonItem>
+          <div className="ion-padding" slot="content">
+            Second Content
+          </div>
+        </IonAccordion>
+        <IonAccordion value="third">
+          <IonItem slot="header" color="light">
+            <IonLabel>Third Accordion</IonLabel>
+          </IonItem>
+          <div className="ion-padding" slot="content">
+            Third Content
+          </div>
+        </IonAccordion>
+      </IonAccordionGroup>
 
       {/* Buscar datos */}
       <IonSearchbar

@@ -26,6 +26,8 @@ import {
   newspaperOutline,
   newspaperSharp,
   navigate,
+  settingsSharp,
+  settingsOutline,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -60,8 +62,8 @@ const listaDePaginas: paginaDelMenu[] = [
   {
     Titulo: "Ajustes",
     url: "/uagro/Ajustes",
-    IconoIos: calendarOutline,
-    IconoAndroid: calendarSharp,
+    IconoIos: settingsOutline,
+    IconoAndroid: settingsSharp,
   },
 ];
 
