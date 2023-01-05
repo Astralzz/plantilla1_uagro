@@ -1,13 +1,11 @@
 import axios from "axios"; //npm i axios
 
-const IP = "10.15.5.25"; // "127.0.0.1";
-const Puerto = "8099"; // "8000";
+const URL = process.env.REACT_APP_API_URL;
 
 //Buscar ultimas n Noticias
 async function getListaNoticias(no: number = 10) {
   //Ruta
-  const url =
-    "http://" + IP + ":" + Puerto + "/api/app/uagro/noticias/lista/" + no;
+  const url = URL + "/api/app/uagro/noticias/lista/" + no;
 
   //Obtenemos lista
   const respuesta = await axios
@@ -27,15 +25,7 @@ async function getListaNoticias(no: number = 10) {
 //Buscar Noticias por nombre
 async function getListaNoticiasPorNombre(nombre: string, no: number = 10) {
   //Ruta
-  const url =
-    "http://" +
-    IP +
-    ":" +
-    Puerto +
-    "/api/app/uagro/noticias/lista/" +
-    nombre +
-    "/" +
-    no;
+  const url = URL + "/api/app/uagro/noticias/lista/" + nombre + "/" + no;
 
   //Obtenemos lista
   const respuesta = await axios

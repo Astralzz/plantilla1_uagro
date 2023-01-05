@@ -86,7 +86,7 @@ const PaginaPrueba: React.FC = () => {
     // Contenido
     <IonContent ref={contentRef} id="colorFondoPagina" className="ion-padding">
       {/* Titulo */}
-      <IonTitle color={"dark"}>Titulo de ejemplo</IonTitle>
+      <IonTitle color={"dark"}>Titulo de ejemplo {" " + process.env.REACT_APP_API_URL }</IonTitle>
 
       {/* Email */}
       <IonItem
