@@ -31,6 +31,7 @@ import PaginaPrueba from "../pages/PaginaPrueba";
 import PaginaMenuNoticias from "../pages/noticias/PaginaMenuNoticias";
 import { personCircle } from "ionicons/icons";
 import PaginaLogin from "../pages/login/PaginaLogin";
+import PageCosa1 from "../pages/PageCosa1";
 
 //Contenedor de paginas
 const ContenedorDePagina: React.FC = () => {
@@ -84,6 +85,8 @@ const ContenedorDePagina: React.FC = () => {
         return <IonNav root={() => <PaginaMenuNoticias />}></IonNav>;
       case "Eventos":
         return <IonTitle>Eventos</IonTitle>;
+      case "Cosa1":
+        return <PageCosa1 />;
       default:
         return <PaginaPrueba />;
     }

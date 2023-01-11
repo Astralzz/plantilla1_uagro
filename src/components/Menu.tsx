@@ -1,4 +1,5 @@
 import {
+  IonAccordionGroup,
   IonContent,
   IonIcon,
   IonImg,
@@ -9,6 +10,7 @@ import {
   IonMenu,
   IonMenuToggle,
   IonNote,
+  IonAccordion,
 } from "@ionic/react";
 
 import { useLocation } from "react-router-dom";
@@ -28,6 +30,7 @@ import {
   navigate,
   settingsSharp,
   settingsOutline,
+  airplane,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -64,6 +67,49 @@ const listaDePaginas: paginaDelMenu[] = [
     url: "/uagro/Ajustes",
     IconoIos: settingsOutline,
     IconoAndroid: settingsSharp,
+  },
+];
+
+interface paginaDelMenuDesplegable {
+  IconoIos: string;
+  IconoAndroid: string;
+  Titulo: string;
+  subMenus: subMenus[];
+}
+
+interface subMenus {
+  Titulo: string;
+  url: string;
+}
+
+// Lista de las paginas
+const listaDePaginasDesplegable: paginaDelMenuDesplegable[] = [
+  {
+    Titulo: "cosa",
+    IconoIos: airplane,
+    IconoAndroid: airplane,
+    subMenus: [
+      { Titulo: "cosa 2", url: "/uagro/Cosa1" },
+      { Titulo: "cosa 2", url: "hgbygf" },
+    ],
+  },
+  {
+    Titulo: "cosa2",
+    IconoIos: airplane,
+    IconoAndroid: airplane,
+    subMenus: [
+      { Titulo: "cosa 2", url: "/uagro/Cosa1" },
+      { Titulo: "cosa 2", url: "hgbygf" },
+    ],
+  },
+  {
+    Titulo: "cosa3",
+    IconoIos: airplane,
+    IconoAndroid: airplane,
+    subMenus: [
+      { Titulo: "cosa 2", url: "/uagro/Cosa1" },
+      { Titulo: "cosa 2", url: "hgbygf" },
+    ],
   },
 ];
 
@@ -112,10 +158,8 @@ const Menu: React.FC = () => {
         <IonList id="menu-list">
           {/* Titulo */}
           {/* <IonListHeader>Uagro</IonListHeader> */}
-
           {/* Logo de la uagro */}
           <IonImg src={logoUagro} id="logoUagro" alt="Logo de la Uagro" />
-
           {/* Subtitulo */}
           <IonNote>Universidad Autónoma de Guerrero</IonNote>
           {/* Recorremos con map */}
@@ -143,8 +187,41 @@ const Menu: React.FC = () => {
               </IonMenuToggle>
             );
           })}
+          {/* Menus desplegables */}{" "}
+          <IonAccordionGroup id="acordeones-menu">
+            {listaDePaginasDesplegable.map((menuDesplegable, index) => {
+              return (
+                <IonAccordion key={index} value={menuDesplegable.Titulo}>
+                  <IonItem slot="header">
+                    <IonLabel>{menuDesplegable.Titulo}</IonLabel>
+                    <IonIcon
+                      slot="start"
+                      ios={menuDesplegable.IconoIos}
+                      md={menuDesplegable.IconoAndroid}
+                    />
+                  </IonItem>
+                  {menuDesplegable.subMenus.map((subMenu, j) => {
+                    return (
+                      <div key={j} slot="content">
+                        <IonItem
+                          className={
+                            location.pathname === subMenu.url ? "selected" : ""
+                          }
+                          routerLink={subMenu.url}
+                          routerDirection="none"
+                          lines="none"
+                          detail={false}
+                        >
+                          <IonLabel>{subMenu.Titulo}</IonLabel>
+                        </IonItem>
+                      </div>
+                    );
+                  })}
+                </IonAccordion>
+              );
+            })}
+          </IonAccordionGroup>
         </IonList>
-
         {/* Parte de las redes sociales */}
         <IonList id="etiquetas-list">
           {/* Titulo */}
