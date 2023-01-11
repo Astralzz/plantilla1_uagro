@@ -74,12 +74,7 @@ interface paginaDelMenuDesplegable {
   IconoIos: string;
   IconoAndroid: string;
   Titulo: string;
-  subMenus: subMenus[];
-}
-
-interface subMenus {
-  Titulo: string;
-  url: string;
+  subMenus: paginaDelMenu[];
 }
 
 // Lista de las paginas
@@ -89,26 +84,18 @@ const listaDePaginasDesplegable: paginaDelMenuDesplegable[] = [
     IconoIos: airplane,
     IconoAndroid: airplane,
     subMenus: [
-      { Titulo: "cosa 2", url: "/uagro/Cosa1" },
-      { Titulo: "cosa 2", url: "hgbygf" },
-    ],
-  },
-  {
-    Titulo: "cosa2",
-    IconoIos: airplane,
-    IconoAndroid: airplane,
-    subMenus: [
-      { Titulo: "cosa 2", url: "/uagro/Cosa1" },
-      { Titulo: "cosa 2", url: "hgbygf" },
-    ],
-  },
-  {
-    Titulo: "cosa3",
-    IconoIos: airplane,
-    IconoAndroid: airplane,
-    subMenus: [
-      { Titulo: "cosa 2", url: "/uagro/Cosa1" },
-      { Titulo: "cosa 2", url: "hgbygf" },
+      {
+        Titulo: "cosa 2",
+        url: "/uagro/Cosa1",
+        IconoIos: airplane,
+        IconoAndroid: airplane,
+      },
+      {
+        Titulo: "cosa 2",
+        url: "hgbygf",
+        IconoIos: airplane,
+        IconoAndroid: airplane,
+      },
     ],
   },
 ];
@@ -213,6 +200,11 @@ const Menu: React.FC = () => {
                           detail={false}
                         >
                           <IonLabel>{subMenu.Titulo}</IonLabel>
+                          <IonIcon
+                            slot="start"
+                            ios={menuDesplegable.IconoIos}
+                            md={menuDesplegable.IconoAndroid}
+                          />
                         </IonItem>
                       </div>
                     );
