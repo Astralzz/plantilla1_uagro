@@ -31,6 +31,25 @@ import {
   settingsSharp,
   settingsOutline,
   airplane,
+  fileTrayStackedOutline,
+  earOutline,
+  folderOpenOutline,
+  handRightOutline,
+  manOutline,
+  checkmarkOutline,
+  documentsOutline,
+  cafeOutline,
+  eyedropOutline,
+  fitnessOutline,
+  fileTrayOutline,
+  businessOutline,
+  ribbonOutline,
+  walkOutline,
+  maleFemaleOutline,
+  openOutline,
+  peopleOutline,
+  peopleCircleOutline,
+  bodyOutline,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -84,6 +103,26 @@ interface paginaDelMenuDesplegable2 {
   subMenus: paginaDelMenu[];
 }
 
+interface paginaDelMenuDesplegable3 {
+  IconoIos: string;
+  IconoAndroid: string;
+  Titulo: string;
+  subMenus: paginaDelMenu[];
+}
+
+interface paginaDelMenuDesplegable4 {
+  IconoIos: string;
+  IconoAndroid: string;
+  Titulo: string;
+  subMenus: paginaDelMenu[];
+}
+interface paginaDelMenuDesplegable5 {
+  IconoIos: string;
+  IconoAndroid: string;
+  Titulo: string;
+  subMenus: paginaDelMenu[];
+}
+
 // Lista de las paginas
 const listaDePaginasDesplegable: paginaDelMenuDesplegable[] = [
   {
@@ -109,25 +148,155 @@ const listaDePaginasDesplegable: paginaDelMenuDesplegable[] = [
 
 const listaDePaginasDesplegable2: paginaDelMenuDesplegable2[] = [
   {
-    Titulo: "cosa",
-    IconoIos: airplane,
-    IconoAndroid: airplane,
+    Titulo: "Servicios Académicos",
+    IconoIos: fileTrayStackedOutline,
+    IconoAndroid: fileTrayStackedOutline,
     subMenus: [
       {
-        Titulo: "cosa 2",
-        url: "/uagro/Cosa1",
-        IconoIos: airplane,
-        IconoAndroid: airplane,
+        Titulo: "Kardex",
+        url: "/uagro/Cosa2",
+        IconoIos: fileTrayStackedOutline,
+        IconoAndroid: fileTrayStackedOutline,
       },
       {
-        Titulo: "cosa 2",
+        Titulo: "Tutorías",
         url: "hgbygf",
-        IconoIos: airplane,
-        IconoAndroid: airplane,
+        IconoIos: earOutline,
+        IconoAndroid: earOutline,
+      },
+      {
+        Titulo: "Tramites",
+        url: "hgbygf",
+        IconoIos: folderOpenOutline,
+        IconoAndroid: folderOpenOutline,
+      },
+      {
+        Titulo: "Captura de Calificaciones",
+        url: "hgbygf",
+        IconoIos: handRightOutline,
+        IconoAndroid: handRightOutline,
+      },
+      {
+        Titulo: "Derechos Laborales",
+        url: "hgbygf",
+        IconoIos: manOutline,
+        IconoAndroid: manOutline,
+      },
+      {
+        Titulo: "Seguridad Social",
+        url: "hgbygf",
+        IconoIos: checkmarkOutline,
+        IconoAndroid: checkmarkOutline,
+      },
+      {
+        Titulo: "Requisitos Tramites y Servicios",
+        url: "hgbygf",
+        IconoIos: documentsOutline,
+        IconoAndroid: documentsOutline,
       },
     ],
   },
 ];
+//Menu desplegable3
+const listaDePaginasDesplegable3: paginaDelMenuDesplegable3[] = [
+  {
+    Titulo: "Servicios Universitarios",
+    IconoIos: fileTrayOutline,
+    IconoAndroid: fileTrayOutline,
+    subMenus: [
+      {
+        Titulo: "Comedores",
+        url: "/uagro/Cosa2",
+        IconoIos: cafeOutline,
+        IconoAndroid: cafeOutline,
+      },
+      {
+        Titulo: "Laboratorios",
+        url: "hgbygf",
+        IconoIos: eyedropOutline,
+        IconoAndroid: eyedropOutline,
+      },
+      {
+        Titulo: "Servicios Médicos",
+        url: "hgbygf",
+        IconoIos: fitnessOutline,
+        IconoAndroid: fitnessOutline,
+      },
+      
+  
+    ],
+  },
+];
+
+//Menu desplegable4
+const listaDePaginasDesplegable4: paginaDelMenuDesplegable4[] = [
+  {
+    Titulo: "Servicios Estudiantes",
+    IconoIos: fileTrayOutline,
+    IconoAndroid: fileTrayOutline,
+    subMenus: [
+      {
+        Titulo: "Casa de Estudiantes",
+        url: "/uagro/Cosa2",
+        IconoIos: businessOutline,
+        IconoAndroid: businessOutline,
+      },
+      {
+        Titulo: "Becas",
+        url: "hgbygf",
+        IconoIos: ribbonOutline,
+        IconoAndroid: ribbonOutline,
+      },
+      {
+        Titulo: "Movilidad",
+        url: "hgbygf",
+        IconoIos: walkOutline,
+        IconoAndroid: walkOutline,
+      },
+      
+  
+    ],
+  },
+];
+
+//Menu desplegable5
+const listaDePaginasDesplegable5: paginaDelMenuDesplegable5[] = [
+  {
+    Titulo: "Servicios a la comunidad",
+    IconoIos: fileTrayOutline,
+    IconoAndroid: fileTrayOutline,
+    subMenus: [
+      {
+        Titulo: "Igualdad",
+        url: "/uagro/Cosa2",
+        IconoIos: maleFemaleOutline,
+        IconoAndroid: maleFemaleOutline,
+      },
+      {
+        Titulo: "Diversidad",
+        url: "hgbygf",
+        IconoIos: peopleOutline,
+        IconoAndroid: peopleOutline,
+      },
+      {
+        Titulo: "Multicultularidad",
+        url: "hgbygf",
+        IconoIos: peopleCircleOutline,
+        IconoAndroid: peopleCircleOutline,
+      },
+      {
+        Titulo: "Discapacidad",
+        url: "hgbygf",
+        IconoIos: bodyOutline,
+        IconoAndroid: bodyOutline,
+      },
+  
+    ],
+  },
+];
+
+
+
 
 
 
@@ -233,8 +402,8 @@ const Menu: React.FC = () => {
                           <IonLabel>{subMenu.Titulo}</IonLabel>
                           <IonIcon
                             slot="start"
-                            ios={menuDesplegable.IconoIos}
-                            md={menuDesplegable.IconoAndroid}
+                            ios={subMenu.IconoIos}
+                            md={subMenu.IconoAndroid}
                           />
                         </IonItem>
                       </div>
@@ -244,6 +413,166 @@ const Menu: React.FC = () => {
               );
             })}
           </IonAccordionGroup>
+          <IonAccordionGroup id="acordeones-menu">
+            {listaDePaginasDesplegable2.map((menuDesplegable2, index) => {
+              return (
+                <IonAccordion key={index} value={menuDesplegable2.Titulo}>
+                  <IonItem slot="header">
+                    <IonLabel>{menuDesplegable2.Titulo}</IonLabel>
+                    <IonIcon
+                      slot="start"
+                      ios={menuDesplegable2.IconoIos}
+                      md={menuDesplegable2.IconoAndroid}
+                    />
+                  </IonItem>
+                  {menuDesplegable2.subMenus.map((subMenu, j) => {
+                    return (
+                      <div key={j} slot="content">
+                        <IonItem
+                          className={
+                            location.pathname === subMenu.url ? "selected" : ""
+                          }
+                          routerLink={subMenu.url}
+                          routerDirection="none"
+                          lines="none"
+                          detail={false}
+                        >
+                          <IonLabel>{subMenu.Titulo}</IonLabel>
+                          <IonIcon
+                            slot="start"
+                            ios={subMenu.IconoIos}
+                            md={subMenu.IconoAndroid}
+                          />
+                        </IonItem>
+                      </div>
+                    );
+                  })}
+                </IonAccordion>
+              );
+            })}
+          </IonAccordionGroup>
+
+          <IonAccordionGroup id="acordeones-menu">
+            {listaDePaginasDesplegable3.map((menuDesplegable3, index) => {
+              return (
+                <IonAccordion key={index} value={menuDesplegable3.Titulo}>
+                  <IonItem slot="header">
+                    <IonLabel>{menuDesplegable3.Titulo}</IonLabel>
+                    <IonIcon
+                      slot="start"
+                      ios={menuDesplegable3.IconoIos}
+                      md={menuDesplegable3.IconoAndroid}
+                    />
+                  </IonItem>
+                  {menuDesplegable3.subMenus.map((subMenu, j) => {
+                    return (
+                      <div key={j} slot="content">
+                        <IonItem
+                          className={
+                            location.pathname === subMenu.url ? "selected" : ""
+                          }
+                          routerLink={subMenu.url}
+                          routerDirection="none"
+                          lines="none"
+                          detail={false}
+                        >
+                          <IonLabel>{subMenu.Titulo}</IonLabel>
+                          <IonIcon
+                            slot="start"
+                            ios={subMenu.IconoIos}
+                            md={subMenu.IconoAndroid}
+                          />
+                        </IonItem>
+                      </div>
+                    );
+                  })}
+                </IonAccordion>
+              );
+            })}
+          </IonAccordionGroup>
+
+          <IonAccordionGroup id="acordeones-menu">
+            {listaDePaginasDesplegable4.map((menuDesplegable4, index) => {
+              return (
+                <IonAccordion key={index} value={menuDesplegable4.Titulo}>
+                  <IonItem slot="header">
+                    <IonLabel>{menuDesplegable4.Titulo}</IonLabel>
+                    <IonIcon
+                      slot="start"
+                      ios={menuDesplegable4.IconoIos}
+                      md={menuDesplegable4.IconoAndroid}
+                    />
+                  </IonItem>
+                  {menuDesplegable4.subMenus.map((subMenu, j) => {
+                    return (
+                      <div key={j} slot="content">
+                        <IonItem
+                          className={
+                            location.pathname === subMenu.url ? "selected" : ""
+                          }
+                          routerLink={subMenu.url}
+                          routerDirection="none"
+                          lines="none"
+                          detail={false}
+                        >
+                          <IonLabel>{subMenu.Titulo}</IonLabel>
+                          <IonIcon
+                            slot="start"
+                            ios={subMenu.IconoIos}
+                            md={subMenu.IconoAndroid}
+                          />
+                        </IonItem>
+                      </div>
+                    );
+                  })}
+                </IonAccordion>
+              );
+            })}
+          </IonAccordionGroup>
+
+          <IonAccordionGroup id="acordeones-menu">
+            {listaDePaginasDesplegable5.map((menuDesplegable5, index) => {
+              return (
+                <IonAccordion key={index} value={menuDesplegable5.Titulo}>
+                  <IonItem slot="header">
+                    <IonLabel>{menuDesplegable5.Titulo}</IonLabel>
+                    <IonIcon
+                      slot="start"
+                      ios={menuDesplegable5.IconoIos}
+                      md={menuDesplegable5.IconoAndroid}
+                    />
+                  </IonItem>
+                  {menuDesplegable5.subMenus.map((subMenu, j) => {
+                    return (
+                      <div key={j} slot="content">
+                        <IonItem
+                          className={
+                            location.pathname === subMenu.url ? "selected" : ""
+                          }
+                          routerLink={subMenu.url}
+                          routerDirection="none"
+                          lines="none"
+                          detail={false}
+                        >
+                          <IonLabel>{subMenu.Titulo}</IonLabel>
+                          <IonIcon
+                            slot="start"
+                            ios={subMenu.IconoIos}
+                            md={subMenu.IconoAndroid}
+                          />
+                        </IonItem>
+                      </div>
+                    );
+                  })}
+                </IonAccordion>
+              );
+            })}
+          </IonAccordionGroup>
+
+
+
+
+
         </IonList>
         {/* Parte de las redes sociales */}
         <IonList id="etiquetas-list">

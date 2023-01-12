@@ -32,6 +32,7 @@ import PaginaMenuNoticias from "../pages/noticias/PaginaMenuNoticias";
 import { personCircle } from "ionicons/icons";
 import PaginaLogin from "../pages/login/PaginaLogin";
 import PageCosa1 from "../pages/PageCosa1";
+import PageCosa2 from "../pages/PageCosa2";
 
 //Contenedor de paginas
 const ContenedorDePagina: React.FC = () => {
@@ -87,6 +88,8 @@ const ContenedorDePagina: React.FC = () => {
         return <IonTitle>Eventos</IonTitle>;
       case "Cosa1":
         return <PageCosa1 />;
+      case "Cosa2":
+        return <PageCosa2 />;
       default:
         return <PaginaPrueba />;
     }
