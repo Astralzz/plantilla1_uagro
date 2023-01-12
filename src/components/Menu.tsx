@@ -77,6 +77,13 @@ interface paginaDelMenuDesplegable {
   subMenus: paginaDelMenu[];
 }
 
+interface paginaDelMenuDesplegable2 {
+  IconoIos: string;
+  IconoAndroid: string;
+  Titulo: string;
+  subMenus: paginaDelMenu[];
+}
+
 // Lista de las paginas
 const listaDePaginasDesplegable: paginaDelMenuDesplegable[] = [
   {
@@ -99,6 +106,30 @@ const listaDePaginasDesplegable: paginaDelMenuDesplegable[] = [
     ],
   },
 ];
+
+const listaDePaginasDesplegable2: paginaDelMenuDesplegable2[] = [
+  {
+    Titulo: "cosa",
+    IconoIos: airplane,
+    IconoAndroid: airplane,
+    subMenus: [
+      {
+        Titulo: "cosa 2",
+        url: "/uagro/Cosa1",
+        IconoIos: airplane,
+        IconoAndroid: airplane,
+      },
+      {
+        Titulo: "cosa 2",
+        url: "hgbygf",
+        IconoIos: airplane,
+        IconoAndroid: airplane,
+      },
+    ],
+  },
+];
+
+
 
 // Contacto
 interface contacto {
