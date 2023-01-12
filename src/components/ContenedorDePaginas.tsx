@@ -1,79 +1,42 @@
 import {
-  IonAccordion,
-  IonAccordionGroup,
   IonAvatar,
   IonButton,
   IonButtons,
-  IonChip,
-  IonCol,
   IonContent,
-  IonDatetime,
-  IonGrid,
   IonHeader,
-  IonIcon,
   IonItem,
   IonLabel,
   IonMenuButton,
-  IonModal,
   IonNav,
   IonPage,
   IonPopover,
-  IonRow,
   IonTitle,
   IonToolbar,
-  useIonActionSheet,
 } from "@ionic/react";
 import { useParams } from "react-router";
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+} from "react";
 import ReactDOM from "react-dom";
 import "./ContenedorDePagina.css";
 import PaginaPrueba from "../pages/PaginaPrueba";
 import PaginaMenuNoticias from "../pages/noticias/PaginaMenuNoticias";
-import { personCircle } from "ionicons/icons";
 import PaginaLogin from "../pages/login/PaginaLogin";
 import PageCosa1 from "../pages/PageCosa1";
+import Usuario from "../models/Usuario";
+import UserLogo from "../img/user-logo.png";
+
+//Parámetros
+interface Props {
+  usuarioSesion: Usuario;
+  setUsuarioSesion: Dispatch<SetStateAction<Usuario>>;
+}
 
 //Contenedor de paginas
-const ContenedorDePagina: React.FC = () => {
+const ContenedorDePaginas: React.FC<Props> = (props) => {
   //Obtenemos el titulo de la pagina por la url
   const { name: nombreUrl } = useParams<{ name: string }>();
-  //Sección del modal
-  const page = useRef(null);
-  const modal = useRef<HTMLIonModalElement>(null);
-  const [presentingElement, setPresentingElement] =
-    useState<HTMLElement | null>(null);
-  const [present] = useIonActionSheet();
-
-  useEffect(() => {
-    setPresentingElement(page.current);
-  }, []);
-
-  function canDismiss() {
-    return new Promise<boolean>((resolve, reject) => {
-      present({
-        header: "Are you sure?",
-        buttons: [
-          {
-            text: "Yes",
-            role: "confirm",
-          },
-          {
-            text: "No",
-            role: "cancel",
-          },
-        ],
-        onWillDismiss: (ev) => {
-          if (ev.detail.role === "confirm") {
-            resolve(true);
-          } else {
-            reject();
-          }
-        },
-      });
-    });
-  }
-
-  const isLogin = false;
 
   //Pagina que se a escogido
   const PaginaEscogida = () => {
@@ -93,9 +56,9 @@ const ContenedorDePagina: React.FC = () => {
   };
 
   //Componentes de login
-  const ComponetesDeLogin = () => {
+  const ComponentesDeLogin = () => {
     // Sesión iniciada ?
-    if (isLogin) {
+    if (props.usuarioSesion.isConectado) {
       return (
         <>
           {/* Boton */}
@@ -127,9 +90,6 @@ const ContenedorDePagina: React.FC = () => {
                 <IonLabel>Configuraciones</IonLabel>
               </IonItem>
               <IonItem button>
-                <IonLabel>Cambiar cuenta</IonLabel>
-              </IonItem>
-              <IonItem button>
                 <IonLabel>Cerrar sesión</IonLabel>
               </IonItem>
             </IonContent>
@@ -154,16 +114,6 @@ const ContenedorDePagina: React.FC = () => {
               />
             </IonAvatar>
           </IonItem>
-
-          {/* Modal */}
-          <IonModal
-            ref={modal}
-            trigger="open-modal"
-            canDismiss={canDismiss}
-            presentingElement={presentingElement!}
-          >
-            <PaginaLogin Modal={modal} />
-          </IonModal>
         </>
       );
     }
@@ -189,7 +139,7 @@ const ContenedorDePagina: React.FC = () => {
 
           {/* Sección de inicio de sesión */}
           <IonButtons slot="secondary">
-            <ComponetesDeLogin />
+            <ComponentesDeLogin />
           </IonButtons>
         </IonToolbar>
       </IonHeader>
@@ -202,4 +152,4 @@ const ContenedorDePagina: React.FC = () => {
   );
 };
 
-export default ContenedorDePagina;
+export default ContenedorDePaginas;
